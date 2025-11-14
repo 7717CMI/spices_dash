@@ -21,6 +21,7 @@ import { CustomScrollbar } from '@/components/ui/CustomScrollbar'
 import { GlobalKPICards } from '@/components/GlobalKPICards'
 import { getChartsForGroup } from '@/lib/chart-groups'
 import { Lightbulb, X, Layers, LayoutGrid, AlertTriangle } from 'lucide-react'
+import { Footer } from '@/components/Footer'
 
 export default function DashboardPage() {
   const { setData, setLoading, setError, data, isLoading, error, filters, selectedChartGroup } = useDashboardStore()
@@ -653,6 +654,9 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
