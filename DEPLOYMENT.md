@@ -25,11 +25,13 @@ This guide will help you deploy the India Spices Market Dashboard to Vercel.
    - Vercel will auto-detect Next.js
 
 3. **Configure Project Settings**
-   - **Root Directory**: Set to `frontend` (or leave blank if using vercel.json)
+   - **Root Directory**: Set to `frontend` (IMPORTANT: This must be set in Vercel dashboard, not in vercel.json)
    - **Framework Preset**: Next.js (auto-detected)
    - **Build Command**: `npm run build` (auto-detected)
    - **Output Directory**: `.next` (auto-detected)
    - **Install Command**: `npm install` (auto-detected)
+   
+   **Note**: After importing, go to Settings → General → Root Directory and set it to `frontend`
 
 4. **Deploy**
    - Click "Deploy"
