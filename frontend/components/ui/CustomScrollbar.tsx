@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 
 interface CustomScrollbarProps {
-  containerRef: React.RefObject<HTMLDivElement>
+  containerRef: React.RefObject<HTMLDivElement | null>
   children: React.ReactNode
 }
 
