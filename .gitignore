@@ -46,7 +46,8 @@ next-env.d.ts
 # OS
 Thumbs.db
 
-# Python (for data conversion scripts)
+# Python scripts (not needed for deployment)
+*.py
 __pycache__/
 *.py[cod]
 *$py.class
@@ -56,7 +57,19 @@ venv/
 env/
 ENV/
 
-# Excel files (optional - uncomment if you don't want to track Excel files)
-# *.xlsx
-# *.xls
+# Excel files (source data - not needed for deployment)
+*.xlsx
+*.xls
+~$*.xlsx
+~$*.xls
+
+# Development/backup folders
+demo_final/
+data-extractor/
+
+# Temporary files
+check_*.py
+analyze_*.py
+compare_*.py
+convert_*.py
 
