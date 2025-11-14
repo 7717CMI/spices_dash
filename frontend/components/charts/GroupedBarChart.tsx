@@ -307,6 +307,7 @@ export function GroupedBarChart({ title, height = 400 }: GroupedBarChartProps) {
               const { payload } = props
               if (!payload || !chartData.isStacked || !chartData.stackedSeries) {
                 // Default legend for non-stacked
+                if (!payload) return null
                 return (
                   <ul className="flex flex-wrap justify-center gap-4 mt-4">
                     {payload.map((entry: any, index: number) => (

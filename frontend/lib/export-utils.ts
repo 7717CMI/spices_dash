@@ -157,10 +157,10 @@ export async function generatePDFReport(
         const title = insight.querySelector('[data-insight-title]')?.textContent || ''
         const description = insight.querySelector('[data-insight-description]')?.textContent || ''
         
-        pdf.setFont(undefined, 'bold')
+        pdf.setFont('helvetica', 'bold')
         pdf.text(`${index + 1}. ${title}`, margin, insightY)
         
-        pdf.setFont(undefined, 'normal')
+        pdf.setFont('helvetica', 'normal')
         const lines = pdf.splitTextToSize(description, contentWidth - 10)
         pdf.text(lines, margin + 5, insightY + 5)
         

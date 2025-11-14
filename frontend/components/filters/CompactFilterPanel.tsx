@@ -320,7 +320,7 @@ export function CompactFilterPanel() {
         <div className="flex gap-1 mt-1">
           <button
             onClick={() => updateFilters({ 
-              yearRange: [data.metadata.historical_end_year - 2, data.metadata.historical_end_year] 
+              yearRange: [data.metadata.base_year - 2, data.metadata.base_year] 
             })}
             className="flex-1 text-xs px-2 py-0.5 bg-gray-100 rounded hover:bg-gray-200"
           >
@@ -328,7 +328,7 @@ export function CompactFilterPanel() {
           </button>
           <button
             onClick={() => updateFilters({ 
-              yearRange: [data.metadata.historical_end_year + 1, data.metadata.forecast_year] 
+              yearRange: [data.metadata.base_year + 1, data.metadata.forecast_year] 
             })}
             className="flex-1 text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded hover:bg-blue-200"
           >

@@ -9,8 +9,7 @@ import {
   getModuleInfo,
   getModuleSections,
   formatDistributorField,
-  getVisibleColumnsForModule,
-  getColumnDisplayName,
+  getTableColumnsForModule,
   type DistributorsIntelligenceData,
   type Distributor,
   type PremiumDistributor
@@ -406,7 +405,7 @@ export function DistributorsIntelligence({ title, height = 600 }: DistributorsIn
 
   // Get visible columns for the table
   const visibleColumns = useMemo(() => {
-    return getVisibleColumnsForModule(selectedModule)
+    return getTableColumnsForModule(selectedModule)
   }, [selectedModule])
 
   // Get total count
@@ -503,16 +502,16 @@ export function DistributorsIntelligence({ title, height = 600 }: DistributorsIn
             <tr>
               {visibleColumns.map((column) => {
                 const isWideColumn = ['core_product_categories', 'key_brands_represented', 
-                                     'retail_chains', 'competitive_benchmarking'].includes(column)
-                const headerClass = column === 's_no'
+                                     'retail_chains', 'competitive_benchmarking'].includes(column.key)
+                const headerClass = column.key === 's_no'
                   ? "px-3 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider border-r border-gray-200 w-16"
                   : isWideColumn
                   ? "px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider border-r border-gray-200 min-w-[150px]"
                   : "px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider border-r border-gray-200 last:border-r-0"
                 
                 return (
-                  <th key={column} className={headerClass}>
-                    {getColumnDisplayName(column)}
+                  <th key={column.key} className={headerClass}>
+                    {column.label}
                   </th>
                 )
               })}
@@ -531,31 +530,31 @@ export function DistributorsIntelligence({ title, height = 600 }: DistributorsIn
                   {visibleColumns.map((column) => {
                     // Determine column-specific styling
                     const isWideColumn = ['core_product_categories', 'key_brands_represented', 
-                                         'retail_chains', 'competitive_benchmarking'].includes(column)
-                    const cellClass = column === 's_no' 
+                                         'retail_chains', 'competitive_benchmarking'].includes(column.key)
+                    const cellClass = column.key === 's_no' 
                       ? "px-3 py-3 text-sm text-gray-900 w-16"
                       : isWideColumn
                       ? "px-4 py-3 text-sm text-gray-500"
                       : "px-4 py-3 whitespace-nowrap text-sm text-gray-500"
                     
                     return (
-                      <td key={column} className={cellClass}>
-                        {column === 's_no' ? (
+                      <td key={column.key} className={cellClass}>
+                        {column.key === 's_no' ? (
                           <span className="text-gray-900">{dist.s_no || index + 1}</span>
-                        ) : column === 'company_name' ? (
+                        ) : column.key === 'company_name' ? (
                           <span className="font-medium text-gray-900">
-                            {formatDistributorField(dist[column])}
+                            {formatDistributorField(dist[column.key])}
                           </span>
-                        ) : column === 'email_address' && dist[column] && dist[column] !== 'xx' ? (
+                        ) : column.key === 'email_address' && dist[column.key] && dist[column.key] !== 'xx' ? (
                           <a
-                            href={`mailto:${dist[column]}`}
+                            href={`mailto:${dist[column.key]}`}
                             onClick={(e) => e.stopPropagation()}
                             className="text-[#168AAD] hover:text-[#1A759F] hover:underline"
                           >
-                            {formatDistributorField(dist[column])}
+                            {formatDistributorField(dist[column.key])}
                           </a>
                         ) : (
-                          formatDistributorField(dist[column])
+                          formatDistributorField(dist[column.key])
                         )}
                       </td>
                     )

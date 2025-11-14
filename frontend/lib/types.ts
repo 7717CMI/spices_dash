@@ -45,7 +45,7 @@ export interface DataRecord {
   segment: string;
   segment_level: 'parent' | 'leaf';
   segment_hierarchy: SegmentHierarchy;
-  time_series: Record<number, number>;
+  time_series: Record<string | number, number>;
   cagr: number;
   market_share: number;
 }

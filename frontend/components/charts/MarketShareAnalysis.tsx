@@ -86,7 +86,7 @@ export function MarketShareAnalysis({ year = 2024 }: MarketShareAnalysisProps) {
           <ResponsiveContainer width="100%" height={400}>
             <PieChart>
               <Pie
-                data={marketShareData}
+                data={marketShareData as any}
                 cx="50%"
                 cy="50%"
                 labelLine={false}
