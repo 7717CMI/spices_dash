@@ -1,0 +1,28 @@
+# Files and directories to ignore when deploying to Vercel
+# (This file is optional - Vercel uses .gitignore by default)
+
+# Python scripts and data
+*.py
+*.xlsx
+*.xls
+__pycache__/
+*.pyc
+
+# Development files
+demo_final/
+data-extractor/
+
+# Documentation (optional - you may want to keep README)
+# README.md
+# DEPLOYMENT.md
+
+# Git files
+.git/
+.gitignore
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
