@@ -234,6 +234,8 @@ export function GroupedBarChart({ title, height = 400 }: GroupedBarChartProps) {
     }
 
     // Non-stacked tooltip (original)
+    const total = payload.reduce((sum: number, entry: any) => sum + (entry.value || 0), 0)
+    
     return (
       <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg min-w-[250px]">
         <p className="font-semibold text-gray-900 mb-3 pb-2 border-b border-gray-200">
@@ -264,6 +266,22 @@ export function GroupedBarChart({ title, height = 400 }: GroupedBarChartProps) {
               </div>
             </div>
           ))}
+          {payload.length > 1 && (
+            <div className="flex items-center justify-between gap-4 mt-2 pt-2 border-t border-gray-200">
+              <span className="text-sm font-semibold text-gray-900">Total</span>
+              <div className="text-right">
+                <span className="text-sm font-bold text-gray-900">
+                  {total.toLocaleString(undefined, { 
+                    minimumFractionDigits: 2, 
+                    maximumFractionDigits: 2 
+                  })}
+                </span>
+                <span className="text-xs text-gray-500 ml-1">
+                  {unit}
+                </span>
+              </div>
+            </div>
+          )}
         </div>
         <div className="mt-3 pt-2 border-t border-gray-200 text-xs text-gray-500">
           {filters.viewMode === 'segment-mode' 
